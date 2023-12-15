@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 import { MdMenu } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
-import { NavLink, useLocation, useNavigate  } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 // import axios from "axios";
 import logo from "../../src/AlgoAlliance_logo.png"
 
@@ -50,49 +50,48 @@ const Sidebar = () => {
 
   const Nav_animation = isTabletMid
     ? {
-        open: {
-          x: 0,
-          width: "16rem",
-          transition: {
-            damping: 40,
-          },
+      open: {
+        x: 0,
+        width: "16rem",
+        transition: {
+          damping: 40,
         },
-        closed: {
-          x: -250,
-          width: 0,
-          transition: {
-            damping: 40,
-            delay: 0.15,
-          },
+      },
+      closed: {
+        x: -250,
+        width: 0,
+        transition: {
+          damping: 40,
+          delay: 0.15,
         },
-      }
+      },
+    }
     : {
-        open: {
-          width: "16rem",
-          transition: {
-            damping: 40,
-          },
+      open: {
+        width: "16rem",
+        transition: {
+          damping: 40,
         },
-        closed: {
-          width: "4rem",
-          transition: {
-            damping: 40,
-          },
+      },
+      closed: {
+        width: "4rem",
+        transition: {
+          damping: 40,
         },
-      };
+      },
+    };
 
   const handleChatClick = (chatId) => {
     // Programmatically navigate to the chat page
-    navigate(`/chat/${chatId}`);
+    navigate(`/chatbot/${chatId}`);
   };
 
   return (
     <div>
       <div
         onClick={() => setOpen(false)}
-        className={`md:hidden fixed inset-0 max-h-screen z-[998] bg-black/50 ${
-          open ? "block" : "hidden"
-        } `}
+        className={`md:hidden fixed inset-0 max-h-screen z-[998] bg-black/50 ${open ? "block" : "hidden"
+          } `}
       ></div>
       <motion.div
         ref={sidebarRef}
@@ -118,13 +117,12 @@ const Sidebar = () => {
           {chats.map((chat, index) => (
             <NavLink
               key={index}
-              to={`/chat/${chat.id}`}
+              to={`/chatbot/${chat.id}`}
               className="text-white no-underline"
             >
               <div
-                className={`bg-gray-800 flex rounded-md mx-2 p-2 max-h-10 h-10 my-1 cursor-pointer ${
-                  pathname === `/chat/${chat.id}` ? "bg-violet-500" : ""
-                }`}
+                className={`bg-gray-800 flex rounded-md mx-2 p-2 max-h-10 h-10 my-1 cursor-pointer ${pathname === `/chat/${chat.id}` ? "bg-violet-500" : ""
+                  }`}
                 onClick={() => handleChatClick(chat.id)}
               >
                 <h1 className="truncate">{chat.title}</h1>
